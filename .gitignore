@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.next/
+.env
+.env.local
+*.log
+coverage/
+workspaces/
+.playwright/
+.DS_Store
+tmp/
+
+# Build and test artifacts
+*.tsbuildinfo
+test-results/
+playwright-report/
+blob-report/
