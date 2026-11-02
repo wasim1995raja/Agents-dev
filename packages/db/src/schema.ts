@@ -605,3 +605,27 @@ export const tasksRelations = relations(agentTasks, ({ one, many }) => ({
   project: one(projects, { fields: [agentTasks.projectId], references: [projects.id] }),
   executions: many(agentExecutions),
 }));
+
+/**
+ * AI Automation Testing Platform — Module 1 (Project Management).
+ *
+ * A testing project under the AI QA platform: the application under test, its
+ * requirements and later execution targets. MVP slice keeps name/description/
+ * app URL + lifecycle status.
+ */
+export const aiTestingProjects = pgTable(
+  "ai_testing_projects",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    name: varchar("name", { length: 120 }).notNull(),
+    description: text("description").notNull().default(""),
+    appUrl: text("app_url").notNull().default(""),
+    status: varchar("status", { length: 32 }).notNull().default("draft"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("ai_testing_projects_status_idx").on(table.status),
+    index("ai_testing_projects_created_at_idx").on(table.createdAt),
+  ],
+);

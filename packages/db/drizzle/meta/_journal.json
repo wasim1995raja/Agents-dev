@@ -22,6 +22,13 @@
       "when": 1793642739207,
       "tag": "0002_real_gargoyle",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793648546994,
+      "tag": "0003_ai_testing_projects",
+      "breakpoints": true
     }
   ]
 }
