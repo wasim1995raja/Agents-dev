@@ -272,7 +272,9 @@ export const api = {
     note?: string,
   ): Promise<{ status: string; applied?: boolean }> =>
     request<{ status: string; applied?: boolean }>(
-      `/api/sms/authorizations/${encodeURIComponent(id)}/${decision}`,
+      `/api/sms/authorizations/${encodeURIComponent(id)}/${
+        decision === "approved" ? "approve" : "reject"
+      }`,
       json({ ...(note ? { note } : {}) }),
     ),
 
